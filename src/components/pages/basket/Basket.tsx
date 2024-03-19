@@ -15,8 +15,6 @@ const Basket = () => {
 		isError,
 	} = useGetBasketProductQuery();
 
-	// const [buyProduct] = usePatchProductMutation();
-
 	if (isLoading) {
 		return <div>Loading...</div>;
 	}
@@ -42,25 +40,6 @@ const Basket = () => {
 					назад
 				</button>
 				<div className={styles.cards}>
-					{/* {basketProduct.map((item) => (
-						<div key={item.product._id} className={styles.product}>
-							<img
-								src={item.product.photoUrl}
-								alt={item.product.productName}
-								className={styles.image}
-							/>
-							<div className={styles.info}>
-								<h3>{item.product.productName}</h3>
-								<p>KGS: {item.product.price}</p>
-								<p>Quantity: {item.product.quantity}</p>
-							</div>
-
-							<button onClick={() => handleBuyProduct(item.product._id)}>
-								Купить
-							</button>
-						</div>
-					))} */}
-
 					{basketProduct &&
 						basketProduct.map((item) => (
 							<div className={styles.product} key={item.product?._id}>
