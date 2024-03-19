@@ -76,7 +76,9 @@ const Basket = () => {
 											<p>KGS: {item.product.price}</p>
 											<p>Quantity: {item.product.quantity}</p>
 										</div>
-										<button>Купить</button>
+										<button onClick={() => handleBuyProduct(item.product._id)}>
+											Купить
+										</button>
 									</>
 								)}
 							</div>
