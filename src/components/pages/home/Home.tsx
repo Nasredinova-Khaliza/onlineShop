@@ -192,7 +192,7 @@ const Home: React.FC<ProductsFormModal> = () => {
 											placeholder="Введите название продукта"
 											width="300px"
 											value={editProductName}
-											onChange={(e) => e.target.value}
+											onChange={(e) => setEditProductName(e.target.value)}
 										/>
 
 										<input
