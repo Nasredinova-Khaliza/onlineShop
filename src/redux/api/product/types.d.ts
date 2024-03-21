@@ -2,6 +2,7 @@
 namespace PRODUCT {
 	type GetProductsResponse = {
 		id: Key | null | undefined;
+		isFavorite: boolean;
 		productName: string;
 		quantity: number | null;
 		price: number | null;
@@ -22,6 +23,7 @@ namespace PRODUCT {
 	type GetProductRequest = string;
 
 	type PostProductResponse = {
+		isFavorite: boolean;
 		productName: string;
 		quantity: number | null;
 		price: number | null;

@@ -42,3 +42,8 @@ export const {
 	usePostBasketProductMutation,
 	usePatchProductMutation,
 } = api;
+
+// 65f9dfeaafcd28ff6751ebdd
+// 65f9e024afcd28ff6751ebf4
+//65f9e026afcd28ff6751ebf9
+//65f9e128afcd28ff6751ec01

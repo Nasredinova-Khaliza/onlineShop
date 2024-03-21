@@ -33,16 +33,14 @@
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
 	color: black;
 	gap: 10px;
 }
 
 .image {
-	max-width: 100%; /* Максимальная ширина изображения */
-	height: auto; /* Автоматическая высота */
+	max-width: 100%;
+	height: auto;
 	border-radius: 8px;
-	margin-bottom: 10px;
 }
 
 .info {
@@ -52,7 +50,6 @@
 .info h3 {
 	margin: 0;
 	font-size: 18px;
-	margin-bottom: 8px;
 }
 
 .info p {

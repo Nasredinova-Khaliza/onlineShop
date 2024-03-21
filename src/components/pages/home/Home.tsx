@@ -13,6 +13,10 @@ import Modal from "../../modal/Modal";
 import { Link } from "react-router-dom";
 import { usePostFavoriteProductMutation } from "../../../redux/api/favoriteProduct/FavoriteProductsApi";
 import { usePostBasketProductMutation } from "../../../redux/api/basket/BasketApi";
+import emtyHeart from "../../../assets/emtyHeart.svg";
+import greenHeart from "../../../assets/greenHeart.svg";
+import edit from "../../../assets/edite.svg";
+import delet from "../../../assets/delete.svg";
 
 interface FormValues {
 	productName: string;
@@ -38,6 +42,11 @@ const Home: React.FC<ProductsFormModal> = () => {
 	const [editPhotoUrl, setEditPhotoUrl] = useState("");
 	const [editQuantity, setEditQuantity] = useState(0);
 	const [editPrice, setEditPrice] = useState(0);
+	console.log(products);
+
+	const [, setIsHeart] = useState(false);
+	const [itemHeart, setItemHeart] = useState<null | string>(null);
+
 	const formik = useFormik<FormValues>({
 		initialValues: {
 			productName: "",
@@ -45,6 +54,7 @@ const Home: React.FC<ProductsFormModal> = () => {
 			price: 0,
 			photoUrl: "",
 		},
+
 		validationSchema: Yup.object({
 			productName: Yup.string().required("Обязательное поле"),
 			quantity: Yup.number()
@@ -75,6 +85,8 @@ const Home: React.FC<ProductsFormModal> = () => {
 
 	const addFavoriteProducts = async (_id: string) => {
 		await postFavoriteProduct(_id);
+		setIsHeart(true);
+		setItemHeart(_id);
 	};
 
 	const addProductToBasket = async (_id: string) => {
@@ -226,30 +238,48 @@ const Home: React.FC<ProductsFormModal> = () => {
 											<p>Количество: {item.quantity}</p>
 											<p>KGS: {item.price}</p>
 										</Link>
-										<div className={scss.buttons}>
-											<button
+										<div className={scss.handleImg}>
+											{itemHeart === item._id || item.isFavorite === true ? (
+												<>
+													<img
+														onClick={() => {
+															addFavoriteProducts(item._id);
+															setItemHeart(null);
+														}}
+														src={greenHeart}
+														alt=""
+													/>
+												</>
+											) : (
+												<>
+													<img
+														onClick={() => addFavoriteProducts(item._id)}
+														src={emtyHeart}
+														alt=""
+													/>
+												</>
+											)}
+
+											<img
 												onClick={() => {
-													addFavoriteProducts(item._id);
-												}}>
-												favorite
-											</button>
+													setProductEditId(item._id);
+													saveEdit(item);
+												}}
+												src={edit}
+												alt="img"
+											/>
+											<img
+												onClick={() => deleteProductId(item._id)}
+												src={delet}
+												alt=""
+											/>
+										</div>
+										<div className={scss.buttons}>
 											<button
 												onClick={() => {
 													addProductToBasket(item._id);
 												}}>
 												Добавить в корзину
-											</button>
-											<button
-												className={scss.deleteBtn}
-												onClick={() => deleteProductId(item._id)}>
-												delete
-											</button>
-											<button
-												onClick={() => {
-													setProductEditId(item._id);
-													saveEdit(item);
-												}}>
-												edit
 											</button>
 										</div>
 									</>

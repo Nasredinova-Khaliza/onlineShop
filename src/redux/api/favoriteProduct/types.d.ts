@@ -4,6 +4,7 @@ namespace FAVORITEPRODUCTS {
 	type GetFavoriteProductsResponse = {
 		_id: string;
 		product: {
+			isFavorite: boolean;
 			_id: string;
 			productName: string;
 			quantity: number;
@@ -15,6 +16,7 @@ namespace FAVORITEPRODUCTS {
 	type GetFavoriteProductsRequest = void;
 
 	type PostFavoriteProductResponse = {
+		isFavorite: boolean;
 		productName: string;
 		quantity: number;
 		price: number;

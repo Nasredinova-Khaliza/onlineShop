@@ -13,6 +13,7 @@ const Header = () => {
 	// console.log(modalIsOpen);
 	const handleLogOut = () => {
 		localStorage.removeItem("token");
+		localStorage.removeItem("isAuth");
 		navigate("/login");
 	};
 
