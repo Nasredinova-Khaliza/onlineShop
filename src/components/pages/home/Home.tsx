@@ -35,7 +35,7 @@ const Home: React.FC<ProductsFormModal> = () => {
 	const [postBasketProduct] = usePostBasketProductMutation();
 	const [putProduct] = usePutProductMutation();
 	const [postProduct] = usePostProductMutation();
-	const { data: products = [] } = useGetProductsQuery();
+	const { data: products = [], refetch } = useGetProductsQuery();
 	const [deleteProduct] = useDeleteProductMutation();
 	const [productEditId, setProductEditId] = useState<null | string>(null);
 	const [editProductName, setEditProductName] = useState("");
@@ -87,6 +87,7 @@ const Home: React.FC<ProductsFormModal> = () => {
 		await postFavoriteProduct(_id);
 		setIsHeart(true);
 		setItemHeart(_id);
+		refetch();
 	};
 
 	const addProductToBasket = async (_id: string) => {
